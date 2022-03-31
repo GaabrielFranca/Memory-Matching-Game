@@ -1,0 +1,33 @@
+.finish_game{
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.message_thx{
+
+color: white;
+font-size: calc(1em + 2vw);     
+}
+
+.btn{
+
+font-family: 'EB Garamond', serif;   
+font-weight: 600;
+font-size: 2vw;
+background: #e9b359;
+width: 25%;
+margin-top: 25px;
+padding: 15px;
+border-radius: 20px;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
