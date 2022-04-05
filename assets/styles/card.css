@@ -1,54 +1,92 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&display=swap');
 
-*{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
+body {
     font-family: 'Noto Sans JP', sans-serif;
-    
+
 }
 
 
-.card{
-width: 150px;
-height: 150px;
-position: relative;
-transform-style: preserve-3d;
-transition: transform .5s;
+.card {
+    width: 130px;
+    height: 130px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .5s;
+
 }
 
-.card_back, .card_front {
- width: 100%;
- height: 100%;   
- display: flex;
- align-items: center;
- justify-content: center;
- border-radius: 20px;
- box-shadow: 10px 10px 10px rgba(0, 0, 0 , 1);
 
- position: absolute;
- backface-visibility: hidden;
+
+
+.card_back,
+.card_front {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
+
+    position: absolute;
+    backface-visibility: hidden;
 }
 
-.flip{
+.flip {
     transform: rotateY(180deg);
 }
 
-.card_front{
- 
- background: #E9B359; 
- transform: rotateY(180deg);
+.card_front {
+
+    background: #E9B359;
+    transform: rotateY(180deg);
 
 }
-.card_back{
+
+.card_back {
     background: #D5782E;
     font-size: 64px;
     /* display: none; */
-    
+
+}
+
+#gameBoard {
+    max-width: 700px;
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+    gap: 20px 15px;
+
+}
+
+
+
+@media screen and (max-width:800px) {
+
+
+    .card {
+        width: calc(3vw + 3em);
+        height: calc(3vw + 3em)
     }
-   
-    
+
+    .card_back {
+        font-size: calc(1vw + 1em);
+    }
+
+    .card_front {}
+
+    #gameBoard {
+        max-width: 300px;
+
+    }
+
+    .icon {
+        width: calc(1vw + 1em);
+    }
+}
