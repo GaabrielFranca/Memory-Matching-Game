@@ -2,39 +2,19 @@ const front = "card_front"
 const back = "card_back"
 const CARD = "card"
 const ICON = "icon"
-let techs = [
-    "js",
-    "html-5",
-    "css",
-    "bootstrap",
-    "github",
-    "database",
-    "firebase",
-    "node-js",
-    "react",
-    "typescript"]
 
 
-
-
-let cards = null
-
-startGame()
 
 function startGame() {
-    cards = createCardsFromTechs(techs)
-    shuffleCards(cards)
-    console.log(cards)
 
-    inicializeCards(cards)
-
-
+    inicializeCards(game.createCardsFromTechs())
 }
+
 
 function inicializeCards(cards) {
     let gameBoard = document.getElementById("gameBoard")
 
-    cards.forEach(card => {
+    game.cards.forEach(card => {
 
         let cardElement = document.createElement("div")
         cardElement.id = card.id;
@@ -71,54 +51,31 @@ function createCardFace(face, card, element) {
 }
 
 
-function shuffleCards(cards) {
-    let currentIndex = cards.length
-    let randomIndex = 0
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex)
-
-        currentIndex--;
-
-        [cards[randomIndex], cards[currentIndex]] = [cards[currentIndex], cards[randomIndex]]
-    }
-
-
-}
-
-function createCardsFromTechs(techs) {
-    let cards = []
-
-    techs.forEach((tech) => {
-        cards.push(createPairTechs(tech))
-    })
-
-    let cards20 = cards.flatMap(pair => pair)
-    console.log(cards20)
-    return cards20
-
-
-}
-
-function createPairTechs(tech) {
-    return [{
-        id: createIDTech(tech),
-        icon: tech,
-        flipped: false
-    }, {
-        id: createIDTech(tech),
-        icon: tech,
-        flipped: false
-    }]
-}
-
-function createIDTech(tech) {
-    return tech + parseInt(Math.random() * 1000)
-}
-
-// createCardsFromTechs(techs)
-
-
 function flipCard() {
-    this.classList.add("flip")
+
+    if (game.setCard(this.id)) {
+        this.classList.add("flip")
+        if (game.chekMatch()) {
+            game.clearCards()
+        } else {
+
+            setTimeout(() => {
+
+                let firstCardView = document.getElementById(game.firstCard.id)
+                let secundCardView = document.getElementById(game.secundCard.id)
+
+                firstCardView.classList.remove("flip")
+                secundCardView.classList.remove("flip")
+
+                game.clearCards()
+            }, 1000)
+        }
+    };
+
+
+
+
+
 }
+
+startGame()

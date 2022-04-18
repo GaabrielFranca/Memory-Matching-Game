@@ -12,6 +12,10 @@ body {
 
 }
 
+.container {
+
+    /* margin-top: 25%; */
+}
 
 .card {
     width: 130px;
@@ -22,7 +26,10 @@ body {
 
 }
 
+.card:hover {
+    cursor: pointer;
 
+}
 
 
 .card_back,
@@ -54,14 +61,21 @@ body {
     background: #D5782E;
     font-size: 64px;
     /* display: none; */
+    transition: ease 0.5s;
+}
 
+.card_back:hover {
+    border: solid 2px #000;
+    background: beige;
 }
 
 #gameBoard {
-    max-width: 700px;
+    max-width: 400px;
     display: grid;
+    justify-content: center;
     grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
-    gap: 20px 15px;
+    gap: 10px;
+    margin: auto;
 
 }
 
@@ -71,22 +85,24 @@ body {
 
 
     .card {
-        width: calc(3vw + 3em);
-        height: calc(3vw + 3em)
+
+
+        width: calc(3vw + 4em);
+        height: calc(3vw + 4em)
     }
 
     .card_back {
-        font-size: calc(1vw + 1em);
+        font-size: calc(1vw + 2em);
     }
 
     .card_front {}
 
     #gameBoard {
         max-width: 300px;
-
+        margin: auto
     }
 
     .icon {
-        width: calc(1vw + 1em);
+        width: calc(1vw + 2em);
     }
 }
